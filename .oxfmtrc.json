@@ -1,8 +1,9 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "printWidth": 120,
+  "printWidth": 80,
   "semi": false,
   "singleQuote": true,
   "sortImports": true,
+  "jsdoc": true,
   "ignorePatterns": []
 }
