@@ -3,7 +3,7 @@
  * result of mapping over the array passing in the initial function as a
  * callback.
  */
-export const map = (fn) => (mappable) => mappable.map(fn)
+export const map = (fn) => (arr) => arr.map(fn)
 
 const log = (...args) => console.log(...args)
 
@@ -20,7 +20,7 @@ What's happening:
 
   `stripeAll`:
     `fn`: stripe
-    returns (mappable) => mappable.map(stripe)
+    returns (arr) => arr.map(stripe)
 
   `striped`: (arr) => arr.map(stripe)
     [1, 2, 3, 4].map((n) => isEven(n) ? 'dark' : 'light')
