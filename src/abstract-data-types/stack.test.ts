@@ -17,6 +17,13 @@ assert({
 })
 
 assert({
+  given: 'pop from an empty stack',
+  should: 'return `undefined`',
+  actual: pop_adt(stack_adt()),
+  expected: [undefined, []],
+})
+
+assert({
   given: 'push `a` to the stack and immediately pop from the stack',
   should: 'return a pair of `a` and `stack()`',
   actual: pop(push('a', stack())),
@@ -29,4 +36,11 @@ assert({
   should: 'return a pair of `b` and `stack(a)`.',
   actual: pop(push('b', push('a', stack()))),
   expected: ['b', stack('a')],
+})
+
+assert({
+  given: 'pop from an empty stack',
+  should: 'return `undefined`',
+  actual: pop(stack()),
+  expected: [undefined, []],
 })
