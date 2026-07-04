@@ -40,7 +40,7 @@ export const push_adt = (item: unknown, s: StackADTObject<unknown>) =>
   s.push(item)
 export const pop_adt = (s: StackADTObject<unknown>) => s.pop()
 
-console.log('--- ADT tests ---')
+console.log('--- encapsulated object tests ---')
 let s1 = stack_adt('a', 1, true)
 console.log(s1.print()) // ['a', 1, true]
 
@@ -76,7 +76,7 @@ export const pop: Pop<unknown> = (s) => {
   return [item, newStack]
 }
 
-console.log('--- Array prototype tests ---')
+console.log('\n--- Array prototype tests ---')
 let s2 = stack('a', 1, true)
 console.log(s2) // ['a', 1, true]
 
