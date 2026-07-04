@@ -3,7 +3,7 @@ type StackADTObject<T> = {
   push: (item: T) => StackADTObject<T>
   pop: () => [T | undefined, StackADTObject<T>]
   print: () => T[]
-  printString: () => string
+  toString: () => string
 }
 type StackADT<T> = (...items: T[]) => StackADTObject<T>
 
@@ -13,7 +13,7 @@ type StackADT<T> = (...items: T[]) => StackADTObject<T>
  * 1. `push` - Takes an item and pushes it into the Stack.
  * 2. `pop` - Returns a tuple of the popped item and the updated Stack.
  * 3. `print` - Returns the current Stack.
- * 4. `printString` - Returns a string representing the current Stack.
+ * 4. `toString` - Returns a string representing the current Stack.
  *
  * Key takeaway: the Stack itself lives in the `items` array, captured by the
  * closure of each returned object. Each time `stack(...)` is called, we get a
@@ -21,7 +21,7 @@ type StackADT<T> = (...items: T[]) => StackADTObject<T>
  * Stack is recreated from scratch on every operation, and thus every instance
  * is _immutable_.
  */
-const stack_adt: StackADT<unknown> = (...items) => ({
+export const stack_adt: StackADT<unknown> = (...items) => ({
   push: (item) => stack_adt(...items, item),
 
   pop: () => {
@@ -33,11 +33,12 @@ const stack_adt: StackADT<unknown> = (...items) => ({
 
   print: () => [...items],
 
-  printString: () => `[${items.join(', ')}]`,
+  toString: () => `[${items.join(', ')}]`,
 })
 
-const push_adt = (item: unknown, s: StackADTObject<unknown>) => s.push(item)
-const pop_adt = (s: StackADTObject<unknown>) => s.pop()
+export const push_adt = (item: unknown, s: StackADTObject<unknown>) =>
+  s.push(item)
+export const pop_adt = (s: StackADTObject<unknown>) => s.pop()
 
 console.log('--- ADT tests ---')
 let s1 = stack_adt('a', 1, true)
@@ -57,16 +58,18 @@ s1 = stack_adt(...rest_adt.print()) // here, we pass the rest_adt into a new Sta
 console.log(s1.print()) // ['a', 1, true, 'b', 2]
 // _now_ we get the new Stack.
 
+// ----------------------------------------------------------------------------
+
 // implementing w/ pure functions using JS's Array prototype
 type Stack<T> = (...items: T[]) => T[]
 type Push<T> = (a: T, stack: T[]) => T[]
 type Pop<T> = (stack: T[]) => [T | undefined, T[]]
 
 /** Takes an arbitrary number of items, and returns a new array with those items. */
-const stack: Stack<unknown> = (...items) => [...items]
+export const stack: Stack<unknown> = (...items) => [...items]
 
-const push: Push<unknown> = (a, s) => s.concat(a)
-const pop: Pop<unknown> = (s) => {
+export const push: Push<unknown> = (a, s) => s.concat(a)
+export const pop: Pop<unknown> = (s) => {
   const newStack = [...s] // can use s.slice() too
   const item = newStack.pop()
 
