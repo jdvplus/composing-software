@@ -1,4 +1,10 @@
 /**
+ * A functor data type is a container with a map operation, which can be used to
+ * apply a function to the values inside of it.
+ *
+ * In JS, functor types are typically represented as an object with a .map()
+ * method that maps from inputs to outputs, e.g., Array.prototype.map().
+ *
  * A functor is a mapping between categories. Functors must respect identity and
  * composition. The functor laws are the axioms that ensure that identity and
  * composition are respected.
