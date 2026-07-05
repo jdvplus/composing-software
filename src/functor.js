@@ -52,3 +52,13 @@ const r3 = identity_two.map((x) => f(g(x)))
 const r4 = identity_two.map(g).map(f)
 r3.map(print) // 6 (2 -> 3 -> 6)
 r4.map(print) // 6 (2 -> 3 -> 6)
+
+// curried map: a generic map that works with any functor
+import { curry } from './utils/curry.js'
+const map = curry((fn, arr) => arr.map(fn))
+
+const double = (n) => n * 2
+const m_double = map(double)
+
+m_double(Identity(4)).map(print) // 8
+m_double([4, 8, 12]).map(print) // 8, 16, 24
