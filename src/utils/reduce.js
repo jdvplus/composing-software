@@ -1,4 +1,7 @@
-// We can use `Array.prototype.reduce()` to define `map`, `filter`, and `forEach`.
+/**
+ * We can use `Array.prototype.reduce()` to define `map`, `filter`, and
+ * `forEach`.
+ */
 
 const map = (fn, arr) => {
   return arr.reduce((acc, curr, index, array) => {
