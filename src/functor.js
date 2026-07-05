@@ -26,7 +26,13 @@ console.log(a.toString() === b.toString()) // true
 /**
  * Takes a value, and returns an object with a `map` method. The `map` method
  * takes a function and returns the result of applying the function to the value
- * inside the Identity.
+ * inside the next Identity.
+ *
+ * `value` is closed over and persists over function calls.
+ *
+ * Note: `Identity` does _not_ infinitely recurse, because the function is only
+ * invoked when `Identity.map()` is invoked - not when the object is first
+ * created.
  */
 const Identity = (value) => ({
   map: (fn) => Identity(fn(value)),
@@ -35,14 +41,14 @@ const Identity = (value) => ({
 const print = (x) => console.log(x)
 
 // identity law
-const identity = Identity(2)
-const r1 = identity
-const r2 = identity.map(identityFn)
-r1.map(print) // 2
-r2.map(print) // 2
+const identity_two = Identity(2) // `value` === 2
+const r1 = identity_two
+r1.map(print) // 2 (`value` === undefined)
+const r2 = identity_two.map(identityFn) // `value` === 2
+r2.map(print) // 2 (`value` === undefined)
 
 // composition law
-const r3 = identity.map((x) => f(g(x)))
-const r4 = identity.map(g).map(f)
+const r3 = identity_two.map((x) => f(g(x)))
+const r4 = identity_two.map(g).map(f)
 r3.map(print) // 6 (2 -> 3 -> 6)
 r4.map(print) // 6 (2 -> 3 -> 6)
