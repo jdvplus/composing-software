@@ -10,7 +10,7 @@
  * the result of invoking `fn` passing in the new array. Otherwise, we return
  * the result of recursively invoking curry passing in `fn` and the new array.
  */
-const curry = (fn, arr = []) => {
+export const curry = (fn, arr = []) => {
   return (...args) => {
     const allArgs = [...arr, ...args]
 
@@ -71,7 +71,9 @@ total = add3(1, 2, 3, 4)
 console.log(total) // 6
 
 // too little + too many
+/*
 const notEnoughArguments = add3(1, 2)
-console.log(notEnoughArguments) // returns a function definition
-const tooManyArguments = add3(1, 2, 3)(4)
-console.log(tooManyArguments) // throws
+console.log(notEnoughArguments) // returns the returned function's definition
+
+const tooManyArguments = add3(1, 2, 3)(4) // throws
+*/
