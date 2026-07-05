@@ -30,8 +30,8 @@ export const assert = ({
     `)
   } else {
     throw new Error(`ERROR:
-      given ${given}
-      should ${should}
+      given: ${given}
+      should: ${should}
       actual: ${actualString}
       expected: ${expectedString}
     `)

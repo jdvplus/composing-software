@@ -8,7 +8,7 @@ type StackADTObject<T> = {
 type StackADT<T> = (...items: T[]) => StackADTObject<T>
 
 /**
- * Takes an arbitrary number of items, and returns an object with three methods:
+ * Takes an arbitrary number of items, and returns an object with four methods:
  *
  * 1. `push` - Takes an item and pushes it into the Stack.
  * 2. `pop` - Returns a tuple of the popped item and the updated Stack.
