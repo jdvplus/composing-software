@@ -40,24 +40,6 @@ export const push_adt = (item: unknown, s: StackADTObject<unknown>) =>
   s.push(item)
 export const pop_adt = (s: StackADTObject<unknown>) => s.pop()
 
-console.log('--- encapsulated object tests ---')
-let s1 = stack_adt('a', 1, true)
-console.log(s1.print()) // ['a', 1, true]
-
-s1 = push_adt('b', s1)
-s1 = push_adt(2, s1)
-s1 = push_adt(false, s1)
-console.log(s1.print()) // ['a', 1, true, 'b', 2, false]
-
-const [popped_adt, rest_adt] = pop_adt(s1)
-console.log(popped_adt) // false
-console.log(rest_adt.print()) // ['a', 1, true, 'b', 2]
-console.log(s1.print()) // ['a', 1, true, 'b', 2, false]
-// note that the original Stack is unchanged.
-s1 = stack_adt(...rest_adt.print()) // here, we pass the rest_adt into a new Stack
-console.log(s1.print()) // ['a', 1, true, 'b', 2]
-// _now_ we get the new Stack.
-
 // ----------------------------------------------------------------------------
 
 // implementing w/ pure functions using JS's Array prototype
