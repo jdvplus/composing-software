@@ -17,7 +17,9 @@
  * iteration. After `.reduce()` completes, the final composed monadic function
  * is returned.
  */
-export const composeMonads =
-  (method) =>
-  (...monads) =>
-    monads.reduce((f, g) => (x) => g(x)[method](f))
+export const composeMonads = (method) => {
+  return (...monads) =>
+    monads.reduce((f, g) => {
+      return (x) => g(x)[method](f)
+    })
+}
