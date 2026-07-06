@@ -60,6 +60,8 @@ const r4 = identity_two.map(g).map(f)
 r3.map(print) // 6 (2 -> 3 -> 6)
 r4.map(print) // 6 (2 -> 3 -> 6)
 
+// ----------------------------------------------------------------------------
+
 // curried map: a generic map that works with any functor
 import { curry } from './utils/curry.js'
 const map = curry((fn, arr) => arr.map(fn))
