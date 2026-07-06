@@ -18,6 +18,6 @@
  * is returned.
  */
 export const composeMonads =
-  (flatMap) =>
+  (method) =>
   (...monads) =>
-    monads.reduce((f, g) => (x) => g(x)[flatMap](f))
+    monads.reduce((f, g) => (x) => g(x)[method](f))

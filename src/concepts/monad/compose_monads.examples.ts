@@ -30,7 +30,7 @@ What's happening in the example above:
 
 composeMonads('then')
   
-  `flatMap`: 'then'
+  `method`: 'then'
   return (...monads) => ...
 
   composePromises(hasPermission, getUserById)
