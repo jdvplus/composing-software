@@ -7,8 +7,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "fmt": "oxfmt .",
-    "fmt:check": "oxfmt --check .",
-    "check": "npm run typecheck && npm run fmt:check"
+    "fmt:check": "oxfmt --check ."
   },
   "devDependencies": {
     "@types/node": "^26.0.1",
