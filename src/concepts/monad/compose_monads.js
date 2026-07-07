@@ -23,3 +23,14 @@ export const composeMonads = (method) => {
       return (x) => g(x)[method](f)
     })
 }
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Since `composeMonads` is a reusable higher-order function, we can create
+ * specialized implementations based on the chaining method we want to use.
+ */
+
+const composePromises = composeMonads('then')
+const composeMap = composeMonads('map')
+const composeFlatMap = composeMonads('flatMap')

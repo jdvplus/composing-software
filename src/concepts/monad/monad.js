@@ -11,6 +11,8 @@
  * into a single operation used to compose type lifting functions (a => M(b)).
  */
 
+// ----------------------------------------------------------------------------
+
 /**
  * Takes a length, and returns a function which takes a value. The returned
  * function then returns an array of length `n`, filled with `x`.
